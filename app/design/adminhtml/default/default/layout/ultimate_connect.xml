@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<layout>
+    <adminhtml_connect_connect_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>ultimate_connect/connect</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="ultimate_connect/adminhtml_connect" name="connect" />
+        </reference>
+    </adminhtml_connect_connect_index>
+</layout>

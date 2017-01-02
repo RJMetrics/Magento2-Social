@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Shopial</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open software license</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Integrate your Magento store to Facebook within 3 steps</summary>
+    <description>The product allows you to integrate your exist store to your Facebook page. The Facebook Store is going to be updated in real-time from your Magento store without any required for update.</description>
+    <notes>Second stable release.</notes>
+    <authors><author><name>Ofir Tahor</name><user>Shopial</user><email>ofir@easysocialshop.com</email></author></authors>
+    <date>2016-11-03</date>
+    <time>14:34:42</time>
+    <contents><target name="magelocal"><dir name="Ultimate"><dir name="Connect"><dir name="Block"><dir name="Adminhtml"><file name="Connect.php" hash="88c7d419e1d2eee8561c224a94c34a59"/></dir></dir><dir name="Helper"><file name="Data.php" hash="c7640deb54d27461feb817d36cb93691"/></dir><dir name="controllers"><dir name="Adminhtml"><dir name="Connect"><file name="ConnectController.php" hash="96a079e0e751a63d465ec934a1c46ce4"/></dir></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="9025ab8f84b5fdf23e42f1d4d0f4a264"/><file name="config.xml" hash="280ae901716f074e71ececed6649b0f7"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="ultimate_connect"><file name="index.phtml" hash="63d37410f3ad0c65136e851ddfa4965c"/></dir></dir><dir name="layout"><file name="ultimate_connect.xml" hash="4fcbf60b176d364009638a44cdca8f30"/></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><file name="Ultimate_Connect.csv" hash="bad8bdc865ac542dd73cc011b38bf988"/></dir></target><target name="mageetc"><dir name="modules"><file name="Ultimate_Connect.xml" hash="b4179c400dce8eecd62d2e8e6e002215"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

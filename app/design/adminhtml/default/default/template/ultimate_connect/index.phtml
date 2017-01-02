@@ -1,0 +1,191 @@
+<style>
+#main-container-shopial .content-header {
+    margin-bottom: 18px;
+    border-bottom: 4px solid #dfdfdf;
+    padding-bottom: .25em;
+}
+
+#main-container-shopial #main-container-shopial #main-container-shopial {
+	font-family: arial;
+}
+#main-container-shopial .content-header h3 {    
+    margin: .3em .5em 0 0;
+    color: #eb5e00;
+    font-size: 1.25em;
+    line-height: 1.2em;
+}
+
+#main-container-shopial #main-container-shopial section {
+	margin-left: 20px;
+}
+
+#main-container-shopial .content-header .form-buttons button {
+    margin-bottom: 3px;
+}
+#main-container-shopial .content-buttons button, #main-container-shopial .content-header button, #main-container-shopial .filter-actions button {
+    margin: 0 0 0 5px;
+}
+#main-container-shopial button.delete, button.save, button.add {
+    padding-left: 6px;
+}
+#main-container-shopial button:hover {
+    background: #f77c16 url(http://fbappqa.ezsocialshop.com/magento1.9/skin/adminhtml/default/default/images/btn_over_bg.gif) repeat-x 0 0;
+}
+#main-container-shopial button, .form-button {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ed6502 #a04300 #a04300 #ed6502;
+    padding: 1px 7px 2px 7px;
+    background: #ffac47 url(http://fbappqa.ezsocialshop.com/magento1.9/skin/adminhtml/default/default/images/btn_bg.gif) repeat-x 0 100%;
+    color: #fff;
+    font: bold 12px arial, helvetica, sans-serif;
+    cursor: pointer;
+    text-align: center !important;
+    white-space: nowrap;
+}
+
+#main-container-shopial button.save span {
+    background-image: url(http://fbappqa.ezsocialshop.com/magento1.9/skin/adminhtml/default/default/images/save_btn_icon.gif);
+	padding-left: 20px;
+}
+
+#main-container-shopial #one-line-style {
+	color:#444;
+	font-size:12px;
+	margin-bottom: 10px;
+}
+
+#main-container-shopial .second-line-style {
+	color:#444;
+	font-size:12px;
+	line-height: 17px;
+}
+
+#main-container-shopial button span {
+    line-height: 1.35em;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+}
+
+#main-container-shopial #error-facebook-shopial {
+    padding-left: 10px;
+    position: absolute;
+    margin-top: 2px;
+}
+#main-container-shopial #install_link {
+	color: #ea7601;
+	text-decoration: underline;
+	font-size:12px;
+}
+#main-container-shopial #code-text {
+	font-size: 14px;
+}
+
+#success-connect-code input {
+    width: 340px;
+    height: 26px;
+    margin: 6px 0;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    color: #79a22e;
+    padding-left: 10px;
+}
+
+.text-for-success {
+	font-size: 12px;
+	color: #333;
+}
+
+#show-facebook-shopial-success {
+    margin-bottom: 8px;
+    display: block;
+}
+</style>
+
+<?php 
+$myRole = $this->checkMyRoleUser();
+if ($myRole == "noUser") { ?>
+<div id="main-container-shopial">
+	<div class="content-header">
+		<h3 class="head-system-account" style="font-weight: bold;">Connect your store to Facebook</h3>    
+	</div>
+	<section>
+		<div id="one-line-style">1. Connect your Magento store to your Facebook bussiness page:</div>
+		<p class="form-buttons">		
+		<?php echo $this->getConnectButton(); ?><div id="connect_responce"></div>
+		</p>		
+		<span id="show-facebook-shopial-success"></span>
+		<div class="second-line-style">2. <b style="font-weight: bold;">If you already installed Shopial Facebook app on your page:</b><br>
+		Go to your Facebook business page, click the "Shop" tab and fill in your store's info.</div>
+		<br>
+		<div class="second-line-style"><strong style="font-weight: bold;">If you haven't installed the Shopial app on your business page:</strong><br>
+		<a href="https://apps.facebook.com/easysocialshop/?sc=facebook&m=internal&cp=search" target="_blank" id="install_link">Install the Facebook app</a>		
+		</div>
+	</section>
+</div>
+
+<script>
+var call_times = 5;
+function doconnect() {
+	if (call_times <= 0) return;
+	
+	try {
+		var shopial_url = "<?php echo $this->getUrl('*/*/doconnect') ?>";
+		var xhttp = new XMLHttpRequest();
+		xhttp.open("GET", shopial_url, true);
+	    xhttp.onreadystatechange = function() {
+	        if(xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+	            //console.log(xhttp.responseText);
+	            var myData = JSON.parse(xhttp.responseText);
+	            //debugger;
+	            //myData.result = "Success";
+	            if (myData.result == "Success") {
+	    			document.getElementById("show-facebook-shopial-success").innerHTML = "<div id='success-connect-code'><div class='text-for-success'>Your store\'s code is:</div><input type='text' value='" + 
+	    			myData.store_id + 
+	    			"' /><div class='text-for-success'>Copy the code and paste it in your Facebook Store Settings page.</div></div>";
+	    			document.getElementById("show-facebook-shopial-success").setAttribute("style", "color:#79a22e;");			
+	    		}
+	
+	    		if (myData.result == "Error") {
+	    			document.getElementById("show-facebook-shopial-success").innerHTML = "There was a problem connecting your store, please try agian later or contact our <a style='color:#007dbd;' href='mailto:support@shopial.com'>support</a>.";
+	    			document.getElementById("show-facebook-shopial-success").setAttribute("style", "color:#007dbd;");			
+	    		}
+	        } else if (xhttp.status === 503){
+				document.getElementById("show-facebook-shopial-success").innerHTML = "There was a problem connecting your store, please try agian later or contact our <a style='color:#007dbd;' href='mailto:support@shopial.com'>support</a>.";
+				document.getElementById("show-facebook-shopial-success").setAttribute("style", "color:#007dbd;");
+				doconnect();
+				call_times--;
+	        }
+	    };    
+	    xhttp.send();
+	} catch(err) {
+		console.log(err);
+		document.getElementById("show-facebook-shopial-success").innerHTML = "There was a problem connecting your store, please try agian later or contact our <a style='color:#007dbd;' href='mailto:support@shopial.com'>support</a>.";
+		document.getElementById("show-facebook-shopial-success").setAttribute("style", "color:#007dbd;");
+	}
+	
+}
+</script>
+<?php } else { ?>
+<div id="main-container-shopial">
+	<div class="content-header">
+		<h3 class="head-system-account" style="font-weight: bold;">Connect your store to Facebook</h3>    
+	</div>
+	<section>
+		<span id="show-facebook-shopial-success" style="color:#79a22e;">
+			<div id="success-connect-code">
+				<div class="text-for-success">Your store's code is:</div>
+				<input type="text" value="<?=$myRole;?>" /><div class="text-for-success">Copy the code and paste it in your Facebook Store Settings page.</div>
+			</div>
+		</span>
+		
+		<div class="second-line-style">2. <b style="font-weight: bold;">If you already installed Shopial Facebook app on your page:</b><br>
+		Go to your Facebook business page, click the "Shop" tab and fill in your store's info.</div>
+		<br>
+		<div class="second-line-style"><strong style="font-weight: bold;">If you haven't installed the Shopial app on your business page:</strong><br>
+		<a href="https://apps.facebook.com/easysocialshop/?sc=facebook&m=internal&cp=search" target="_blank" id="install_link">Install the Facebook app</a>		
+		</div>
+	</section>	
+</div>
+<?php } ?>

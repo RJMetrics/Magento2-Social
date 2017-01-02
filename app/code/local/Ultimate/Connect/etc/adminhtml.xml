@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ultimate_connect translate="title" module="ultimate_connect">
+                                        <title>Connect</title>
+                                    </ultimate_connect>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <ultimate_connect translate="title" module="ultimate_connect">
+                        <title>Connect to Shopial</title>
+                        <children>
+                            <connect translate="title" module="ultimate_connect">
+                                <title>Connect</title>
+                                <sort_order>0</sort_order>
+                            </connect>
+                        </children>
+                    </ultimate_connect>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <ultimate_connect translate="title" module="ultimate_connect">
+            <title>Connect to Shopial</title>
+            <sort_order>999</sort_order>
+            <children>
+                <connect translate="title" module="ultimate_connect">
+                    <title>Connect</title>
+                    <action>adminhtml/connect_connect</action>
+                    <sort_order>0</sort_order>
+                </connect>
+            </children>
+        </ultimate_connect>
+    </menu>
+</config>

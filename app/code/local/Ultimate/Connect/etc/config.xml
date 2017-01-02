@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Ultimate_Connect>
+            <version>1.0.2</version>
+        </Ultimate_Connect>
+    </modules>
+    <global>
+        <blocks>
+            <ultimate_connect>
+                <class>Ultimate_Connect_Block</class>
+            </ultimate_connect>
+        </blocks>
+        <helpers>
+            <ultimate_connect>
+                <class>Ultimate_Connect_Helper</class>
+            </ultimate_connect>
+        </helpers>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <ultimate_connect>
+                    <file>ultimate_connect.xml</file>
+                </ultimate_connect>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Ultimate_Connect>
+                    <files>
+                        <default>Ultimate_Connect.csv</default>
+                    </files>
+                </Ultimate_Connect>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ultimate_Connect before="Mage_Adminhtml">Ultimate_Connect_Adminhtml</Ultimate_Connect>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>
