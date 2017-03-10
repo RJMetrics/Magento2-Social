@@ -1,0 +1,217 @@
+/**
+ * Copyright © 2017 Shopial. All rights reserved.
+ */
+
+.page-layout-admin-2columns-left .page-columns .main-col {
+	width: calc( (100%) - 30px )!important;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+#main-container-shopial {
+	height: 500px;
+}
+
+#top-header-magento {
+    background: #f8f8f8;
+    border-bottom: 1px solid #e3e3e3;
+    direction: rtl;
+    border-top: 1px solid #e3e3e3;
+    padding: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.go-to-facebook-button {    
+    background-color: #eb5202;
+    border-color: #eb5202;    
+	width: 86px;
+}
+
+.go-to-facebook-button:hover {	
+    border-color: #514943;
+    box-shadow: 0 0 0 1px #007bdb;
+    color: #fff;
+    text-decoration: none;		
+	background: #aa2d00;	
+	opacity: 50%;
+	-moz-opacity: 50;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";	
+}
+
+.connect-button {
+	background-color: #e3e3e3;
+    border: 1px solid #adadad;
+    color: #322923;
+    display: inline-block;
+    padding: 7px 15px!important;
+	line-height: 21px;    
+}
+
+.connect-button:hover {	
+    border-color: #b84002;
+    box-shadow: 0 0 0 1px #007bdb;
+    color: #fff;
+    text-decoration: none;		
+	background: #cccccc;	
+	opacity: 50%;
+	-moz-opacity: 50;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";	
+}
+
+.shopial-button {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #fff; 
+}
+
+#copy-and-code-box span {
+	font-size: 12px;
+	margin-top: 10px;
+	color: #303030;
+}
+
+input {
+	width: 41.666667%!important;
+}
+
+.admin__control-text {
+    min-width: 4rem;
+}
+
+.label {
+    color: #303030;
+    float: none;
+    font-size: 14px;
+    width: calc(100%/14);
+    vertical-align: top;
+    padding-top: 10px;    
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    position: relative;
+    top: 30px;    
+}
+
+td {
+    vertical-align: top;
+    text-align: left;
+}
+
+.note {
+    color: #303030;
+    font-size: 12px;
+    margin: 6px 0;
+}
+
+.space-td {
+	width: 3%;
+}
+
+a.disable-button-go-to-facebook {
+	background-color: #eb5202;
+    border-color: #eb5202;
+    opacity: 0.5!important;
+    cursor: default;
+    -moz-opacity: 50!important;
+   	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	text-decoration: none!important;
+	color: #fff!important;
+	box-shadow: none!important;
+}
+
+a.disable-button-go-to-facebook:hover {
+	background-color: #eb5202;
+    border-color: #eb5202;
+    opacity: 0.5!important;
+    cursor: default;
+    -moz-opacity: 50!important;
+   	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	border: 0!important;
+	text-decoration: none!important;
+	color: #fff!important;
+	box-shadow: 0!important;
+}
+
+.disable-button, .disable-button.connect-button:hover {
+    cursor: default;
+    box-shadow: none!important;
+    border: 0;
+    background: #8c8684;
+    color: #fff;
+    opacity: 50%!important;
+    -moz-opacity: 50;
+}
+
+.admin__scope-old input[type=text] {
+	border: 1px solid #adadad!important;
+    color: #303030!important;
+    background-color: #fff!important;
+	opacity: 1!important;
+	-moz-opacity: 100!important;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100)!important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"!important;
+    cursor: default!important;    
+}
+
+.spe-height {
+	height: 15px;
+}
+
+.spe-second-height {
+	height: 23px;
+}
+
+.second-td {
+    padding-left: 74px;
+}
+
+#notification-message {
+	background: #fffbbb;
+	width: 100%;
+	line-height: 55px;
+	display: none;
+}
+
+#notification-message span {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #303030;
+    font-size: 14px;    
+}
+
+#v-yes-icon {
+    padding-left: 15px;
+    padding-right: 10px;
+    display: inline-block;
+    position: relative;
+    top: 5px; 
+}
+
+#spinner-lg {
+    padding-left: 15px;
+    position: relative;
+    top: 3px;
+    display: none;
+    vertical-align: top;
+}
+
+#spe-height-2 {
+    margin-top: 15px;
+}
+
+.admin__scope-old a:focus, .admin__scope-old a:hover, .admin__scope-old a:visited, .admin__scope-old a:active {
+	color: #fff!important;
+	text-decoration: none!important;
+}
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"  xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Connect your store to Facebook</title>
+        <css src="Shopial_Facebook::css/main.css"/>
+    </head>
+    <body>
+
+        <referenceContainer name="content" htmlTag="div" htmlId="big-content-magento">
+            <block class="Shopial\Facebook\Block\Save" name="facebook_save" template="connect_facebook_view.phtml" />
+        </referenceContainer>
+        
+		<!-- 
+        <referenceContainer name="content">
+            <uiComponent name="connect_to_facebook"/>
+        </referenceContainer>
+		-->
+    </body>
+</page>
