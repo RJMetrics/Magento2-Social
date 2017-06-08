@@ -1,94 +1,32 @@
 <?php
 /**
- * Copyright © 2017 Shopial. All rights reserved.
+ * Copyright 2017 Shopial. All rights reserved.
  * 
- * @var $block \Shopial\Facebook\Block\Save
  */
 
-$disableButton = "";
-if ($block->isUserExist()) {
-	$disableButton = "disable-button";
-}
-
-$userId = $block->getStoreURL();
-$urlForLaunchStore = "#";
-if($userId > 0) {
-	$urlForLaunchStore = "https://fbapp.ezsocialshop.com/facebook/index.php/magento2/loginEmailPermissioned?mid=" . $userId;
-}
+$urlForLaunchStore = "https://fbapp.ezsocialshop.com/facebook/index.php/magento2/loginEmailPermissioned?store_url=" . urlencode($block->getBaseUrl());
 ?>
-<script>
-    require([
-        'jquery',
-        'prototype'
-    ], function(jQuery){
-    	jQuery(document).on("click", "#connect-button:not(.disable-button)", function () {
-            var params = {};
-            new Ajax.Request('<?php echo $this->getUrl('*/save/save') ?>', {
-                parameters:     params,
-                loaderArea:     false,
-                asynchronous:   true,
-                onCreate: function() {
-                	jQuery('#spinner-lg').css("display", "inline-block");
-                	jQuery('#connect-button').addClass("disable-button");
-                },
-                onSuccess: function(response) {
-                    var data = response.responseText;
-                    var myData = jQuery.parseJSON(data);
-                    console.log(myData.result);
-                    if (myData.result == "Error") {
-                    	jQuery('#connect-button').removeClass("disable-button");
-                    } else {
-                    	jQuery('#notification-message').show();
-                    	jQuery('#go-to-facebook-button').removeClass("disable-button-go-to-facebook");
-                    	jQuery('#go-to-facebook-button').attr("href", myData.store_url);
-	                	jQuery('#connect-button').addClass("disable-button");
-                    }
-                    jQuery('#spinner-lg').hide();
-                }
-            });
-        });
-
-    });
-</script>
-
 <div id="main-container-shopial">
-	<aside id="notification-message" style="<?php if($userId > 0) { echo "display: block;"; } else { echo "display: none;"; } ?>">
-	<div id="v-yes-icon"><img src="<?php echo $this->getViewFileUrl('Shopial_Facebook::img/check.png'); ?>" /></div>
-	<span>Your Magento store is connected to Facebook</span></aside>
-	<table cellspacing="0" class="form-list">
+	<table cellspacing="2" class="form-list">
 		<tbody>
-			<tr>				
-				<td colspan="2" class="label second-td">
-					<label>1. Connect Magento to Facebook</label>
+			<tr>
+				<td colspan="2"><label>1. <?php echo $block->escapeHtml(__("Please activate \"Magento Social\" integration at System->Integrations"));?></label>
 				</td>
-				<td class="label"></td>
 			</tr>
 			<tr>
-				<td colspan="3" class="spe-height"></td>				
-			</tr>			
-			<tr>				
-				<td colspan="2" class="second-td">
-					<div id="connect-button" class="connect-button <?php echo $disableButton; ?> shopial-button">Connect</div>
-					<span id="spinner-lg"><img src="<?php echo $this->getViewFileUrl('Shopial_Facebook::img/spinner-lg.gif'); ?>" /></span>
-				</td>
-				<td class="label"></td>
+				<td colspan="2" class="action-secondary"><a
+					href="<?php echo $block->getUrl('adminhtml/integration');?>"><?php echo $block->escapeHtml(__("Integrations page"));?></a></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="second-td">
-					<label id="spe-height-2">2. Setup your Facebook store</label>
+				<td colspan="2"><label id="spe-height-2"><?php echo $block->escapeHtml(__("2. Setup your Facebook store"));?></label>
 				</td>
-				<td class="label"></td>
 			</tr>
 			<tr>
-				<td colspan="3" class="spe-second-height"></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="second-td">
-					<a id="go-to-facebook-button" target="_blank" <?php if ($userId > 0) { echo "href='" . $urlForLaunchStore . "'"; } ?> 
-					class="go-to-facebook-button shopial-button <?php if(!($userId > 0)) { echo "disable-button-go-to-facebook"; } ?>">Launch store</a>
-				</td>
+				<td colspan="2" class="action-primary"><a id="go-to-facebook-button"
+					target="_blank" href="<?php echo $urlForLaunchStore;?>">
+					<?php echo $block->escapeHtml(__("Launch store"));?></a></td>
 				<td class="label"></td>
-			</tr>			
+			</tr>
 		</tbody>
 	</table>
 </div>
