@@ -16,9 +16,6 @@ class Index extends \Magento\Framework\App\Action\Action
     /** @var \Magento\Framework\View\Result\PageFactory  */
     private $resultPageFactory;
     
-    /** @var \Zend\Log\Writer\Stream  */
-    private $logger;
-    
      /** 
      * @inheritdoc
      * @param \Magento\Framework\App\Action\Context $context
