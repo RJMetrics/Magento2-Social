@@ -1,4 +1,4 @@
-# Magento_Shopial_Facebook-module module
+# Magento_ShopialFacebook module
 
 ## Overview
 
