@@ -1,11 +1,23 @@
 ## Overview
 
-The Magento_Social module provides integration with 
-[Magento Social solution](http://www.shopial.com/products/business-intelligence). 
-Magento Social enable sellers to sell and promote their products in Facebook. 
-The module will create Facebook store on your business page and will take care for the auto sync of the store products  
+# Magento_Shopial_Facebook-module module
 
-The Magento_Social module adds: 
+Shopial_Facebook module enable you to sell and promote their products in Facebook. 
+The integration is very simple and it enable your customers to purchase your products through Facebook while the module is taking care for the synchronization between your original store and you Facebook store.
+You will be able to create 
 
-- Installation page at the Marketing menu
-- Integration user in order to get token from your store. The token will be required to activate manually by the admin user
+
+
+## Installation details
+
+The Shopial_Facebook module create a new user integration that called Magento Social which has permission to the Magento_Catalog::products. 
+In order to complete the integration the user need to manually enter to the Integration tab under System and Activate this user. 
+After then, there is a new tab that called Magento Social under Marketing that continue the installation on the Facebook business page side.
+
+
+
+### UI components
+
+The Shopial_Facebook module provide UI component under Marketing which called Magento Social and enable the abilities to redirect to the Integration tab and continue the installation process outside of the Magento environment. 
+It also contain some information about how to activate the integration user as well.
+
