@@ -1,6 +1,6 @@
-## Overview
-
 # Magento_Shopial_Facebook-module module
+
+## Overview
 
 Shopial_Facebook module enable you to sell and promote their products in Facebook. 
 The integration is very simple and it enable your customers to purchase your products through Facebook while the module is taking care for the synchronization between your original store and you Facebook store.
