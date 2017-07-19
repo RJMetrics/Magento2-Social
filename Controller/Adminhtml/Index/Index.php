@@ -18,11 +18,11 @@ class Index extends \Magento\Backend\App\AbstractAction
     
      /** 
       * @inheritdoc
-      * @param \Magento\Framework\App\Action\Context $context
+      * @param \Magento\Backend\App\Action\Context $context
       * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
       */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
+        \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory
     ) {
         $this->resultPageFactory = $resultPageFactory;
