@@ -1,5 +1,5 @@
 {
-	"name" : "shopial/facebook-module",
+	"name" : "shopialfb/facebook-module",
 	"description" : "Connect your shop to Facebook page",
 	"type" : "magento2-module",
 	"version" : "2.0.0",
