@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Social::all" title="Social networks Integration" translate="title" sortOrder="400">
+                    <resource id="Magento_Social::manage_facebook" title="Manage Facebook integration" translate="title" sortOrder="10"/>
+                    <resource id="Magento_Social::products" title="Products Information" translate="title" sortOrder="20"/>
+                    <resource id="Magento_Social::status" title="Social Networks Status Information" translate="title" sortOrder="30"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

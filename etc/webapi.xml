@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <route url="/V1/social/products" method="GET">
+        <service class="Magento\Social\Api\SocialNetworksInterface" method="getProducts"/>
+        <resources>
+            <resource ref="Magento_Social::products" />
+        </resources>
+    </route>
+
+    <route url="/V1/social/initial_products" method="GET">
+        <service class="Magento\Social\Api\SocialNetworksInterface" method="getInitialProducts"/>
+        <resources>
+            <resource ref="Magento_Social::products" />
+        </resources>
+    </route>
+
+    <route url="/V1/social/status/integration/:code" method="GET">
+        <service class="Magento\Social\Api\SocialNetworksInterface" method="getIntegrationStatus"/>
+        <resources>
+            <resource ref="Magento_Social::status" />
+        </resources>
+    </route>
+
+    <route url="/V1/social/status/subscription/:code" method="GET">
+        <service class="Magento\Social\Api\SocialNetworksInterface" method="getSubscriptionStatus"/>
+        <resources>
+            <resource ref="Magento_Social::status" />
+        </resources>
+    </route>
+</routes>

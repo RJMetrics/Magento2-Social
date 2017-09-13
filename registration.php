@@ -5,6 +5,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Shopial_Facebook',
+    'Magento_Social',
     __DIR__
 );

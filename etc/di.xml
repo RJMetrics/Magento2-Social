@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Social\Api\Data\ProductInfoInterface" type="Magento\Social\Common\Data\ProductInfo" />
+    <preference for="Magento\Social\Api\Data\ProductListInterface" type="Magento\Social\Common\Data\ProductList" />
+    <preference for="Magento\Social\Api\Data\SetupRequestInterface" type="Magento\Social\Common\Data\SetupRequest" />
+    <preference for="Magento\Social\Api\Data\SyncRequestInterface" type="Magento\Social\Common\Data\SyncRequest" />
+    <preference for="Magento\Social\Api\Data\ResultInterface" type="Magento\Social\Common\Data\Result" />
+    <preference for="Magento\Social\Api\Data\SubscriptionStatusInterface" type="Magento\Social\Common\Data\SubscriptionStatus" />
+    <preference for="Magento\Social\Api\Data\IntegrationStatusInterface" type="Magento\Social\Common\Data\IntegrationStatus" />
+
+    <preference for="Magento\Social\Api\SocialNetworksInterface" type="Magento\Social\Common\SocialNetworks" />
+    <type name="Magento\Social\Common\SocialNetworks">
+        <arguments>
+            <argument name="networks" xsi:type="array">
+                <item name="facebook" xsi:type="object">Magento\Social\Common\SocialNetwork\Facebook</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

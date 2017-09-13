@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="social" translate="label" sortOrder="700">
+            <label>Social</label>
+        </tab>
+        <section id="social" translate="label" type="text" sortOrder="700" showInDefault="1">
+            <label>Social Networks Integrations</label>
+            <tab>social</tab>
+            <resource>Magento_Social::all</resource>
+            <group id="facebook" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Facebook</label>
+                <field id="store_code" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Store View to use</label>
+                    <comment>Choose from what Store View products should be synced by default.</comment>
+                    <source_model>Magento\Store\Model\ResourceModel\Store\Collection</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

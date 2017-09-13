@@ -1,0 +1,10 @@
+<?php
+/**
+ * Copyright 2017 Shopial. All rights reserved.
+ *
+ */
+/** @var Magento\Social\Block\Facebook\Pixel $block */
+?>
+<script>
+    fbq('track', 'Search', <?php echo $block->getSearchPixelJson(); ?>;)
+</script>

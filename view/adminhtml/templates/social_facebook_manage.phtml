@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright 2017 Shopial. All rights reserved.
+ *
+ */
+/** @var Magento\Social\Block\Adminhtml\Facebook\Manage $block */
+$urlForUpgrade = "https://fbapp.ezsocialshop.com/facebook/index.php/magento2/loginEmailPermissioned?store_url=" .
+                     urlencode($block->getBaseUrl());
+?>
+<div id="social-main-container" class="social-main-container">
+    <?php if ($block->getPixelId()): ?>
+    <div class="social-section social-section-status">
+        <div class="social-section-row">
+            <img src="<?php echo $block->getViewFileUrl('Magento_Social::images/magento-social-logo.png'); ?>"/>
+        </div>
+        <div class="social-section-row">
+            <h3 class="label social-facebook-label"><?php echo __('Store Type:'); ?></h3>
+            <div class="social-facebook-value"><?php echo $block->getStoreType(); ?></div>
+        </div>
+        <div class="social-section-row">
+            <h3 class="label social-facebook-label"><?php echo __('Products connected to Facebook:'); ?></h3>
+            <div class="social-facebook-value">
+                <?php echo $block->getConnectedProductsCount(); ?>/<?php echo $block->getTotalVisibleProducts(); ?>
+            </div>
+        </div>
+        <div class="social-section-row">
+            <h3 class="label social-facebook-label"><?php echo __('Last update:'); ?></h3>
+            <div class="social-facebook-value"><?php echo $block->getLastSyncDate(); ?></div>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php if (!$block->isUpgraded()): ?>
+    <div class="social-section social-section-info">
+        <h3 class="label"><?php echo __('Easily integrate your Magento store with Facebook'); ?></h3>
+        <p><?php echo __('Integrate your Magento store with a Facebook business page'); ?></p>
+        <p><?php echo __('Create Facebook ad to any of your Magento product catalog'); ?></p>
+        <p><?php echo __('Automatically sync your Magento product catalog with your Facebook store'); ?></p>
+        <p><?php echo __('Drive customers to your Magento store from product clicks in Facebook store'); ?></p>
+        <p><?php echo __('Full mobile support is provided'); ?></p>
+        <div class="social-section-upgrade">
+            <button disabled="disabled" class="action action-secondary social-upgrade-account disabled" href="<?php echo $urlForUpgrade; ?>">
+                <span><?php echo __('Upgrade'); ?></span>
+            </button>
+            <p class="social-section-upgrade-text">
+                <?php echo __('Come back to the Magento Admin Panel when you are ready to sync your entire Magento product catalog.'); ?>
+            </p>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#social-main-container": {
+            "Magento_Social/js/social": <?php echo $block->getFbConfigurationJson(); ?>
+        }
+    }
+</script>

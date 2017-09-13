@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright 2017 Shopial. All rights reserved.
+ *
+ */
+/** @var Magento\Social\Block\Facebook\Pixel $block */
+?>
+<?php if ($block->getPixelId()): ?>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '<?php echo $block->getPixelId() ?>', {}, {agent: '<?php echo $block->getFacebookAgentVersion() ?>'});
+        fbq('track', 'PageView', {
+            source: 'magento',
+            version: "<?php echo $block->getMagentoVersion() ?>",
+            pluginVersion: "<?php echo $block->getPluginVersion() ?>"
+        });
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=<?php echo $block->getPixelId() ?>&ev=PageView&noscript=1&cd[source]=magento&cd[version]=<?php echo $block->getMagentoVersion() ?>&cd[pluginVersion]=<?php echo $block->getPluginVersion() ?>&a=<?php echo $block->getFacebookAgentVersion() ?>"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+<?php else: ?>
+    <script>
+        console.log('Facebook pixel is not configured.');
+    </script>
+<?php endif; ?>

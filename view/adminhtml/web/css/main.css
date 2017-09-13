@@ -2,21 +2,46 @@
  * Copyright 2017 Shopial. All rights reserved.
  */
 
-.page-layout-admin-2columns-left .page-columns .main-col {
-	width: calc( (100%) - 30px )!important;
-	padding-left: 15px!important;
+.social-facebook-action-connect {
+    margin-left: 1.3em;
 }
 
-
-#main-container-shopial {
-	height: 500px;
+.social-section-upgrade {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
 }
 
-#main-container-shopial a {
-	color: #fff!important;
-	text-decoration: none!important;
+.social-section-upgrade-text {
+    padding-right: 100px;
 }
 
-#main-container-shopial tr {
-	height: 45px;
+.social-upgrade-account {
+    float: right;
+    margin-top: -10px;
+}
+
+.social-main-container {
+    display: flex;
+}
+.social-section {
+    min-width: 50%;
+    width: 100%;
+}
+
+.social-section-row {
+    margin-bottom: 30px;
+}
+
+.social-facebook-label {
+    margin: 0 0 .5rem;
+}
+.social-facebook-value {
+    height: 35px;
+    width: 163.8px;
+    color: #EE5100;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 35px;
+    white-space: nowrap;
 }
