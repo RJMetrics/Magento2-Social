@@ -1,20 +1,21 @@
-# Magento_ShopialFacebook module
+# Magento_ShopialFacebook Module
  
 ## Overview
  
-The Shopial_Facebook module enables you to sell and promote products in Facebook.  The integration is easy to use and it allows your customers to purchase products through Facebook.  When you update a product in your original store, the update is synchronized with your Facebook store so that you need only to make changes in one place. 
+The Shopial_Facebook module enables you to sell and promote products on Facebook.  The integration is easy to use and upon completion allows customers to buy products on your Facebook page.  Updating products in your original store automatically updates products in your Facebook store. 
  
-## Installation details
+## Installation Details
  
-The Shopial_Facebook module creates a new user integration called Magento Social which has permissions to the Magento catalog of products. To complete the integration, the user manually enters the Integration tab System and activate this user.   A new tab is created called Marketing > Magento Social that permits you to continue the installation on the Facebook business page side.
+The Shopial_Facebook module creates a new user integration called Magento Social, which has permissions to the Magento catalog of products.  To complete the integration, follow directions in the user’s guide to allow popups from your store, activate Magento Social and launch your Facebook store.
   
-### UI components
+### UI Components
  
-On the Marketing tab, there is a new menu item called Magento Social. The Magento Social page contains abilities to redirect to the Integration tab and continue the installation process outside of the Magento environment. Creating an ad, upgrading the account and activation information will be available after the integration.
+On the Marketing tab, you will see a new menu item called Magento Social. The Magento Social page contains abilities to redirect you to the Integration tab where you can continue the installation process outside of the Magento environment. Creating ads, upgrading your account and additional activation information will be available after the integration.
 
  
-#### Extension points
+#### Extension Points
  
-The Magento Social module does not provide extension points 
+The Magento Social module does not provide extension points.
+
 
 
