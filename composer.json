@@ -1,18 +1,18 @@
 {
-	"name" : "shopialfb/facebook-module",
-	"description" : "Connect your shop to Facebook page",
-	"type" : "magento2-module",
-	"version" : "2.2.1",
-	"license" : [
+	"name":"shopialfb/facebook-module",
+	"description":"Connect your shop to Facebook page",
+	"type":"magento2-module",
+	"version":"2.2.1",
+	"license":[
 		"OSL-3.0",
 		"AFL-3.0"
 	],
-	"autoload" : {
-		"files" : [
+	"autoload":{
+		"files":[
 			"registration.php"
 		],
-		"psr-4" : {
-			"Shopial\\Facebook\\" : ""
+		"psr-4":{
+			"Shopial\\Facebook\\":""
 		}
 	}
 }
